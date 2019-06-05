@@ -56,12 +56,7 @@
                         @else
                         
                         <li class="nav-item"><a class="nav-link" href="{{route('messages.create')}}">Enviar Mensaje</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{route('notifications.index')}}">Notification
-                                @if ($count = Auth::user()->unreadNotifications->count())
-                                <span class="badge badge-primary">{{$count}}</span>
-                                @endif
-                            </a>
-                        </li>
+                        
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
