@@ -32,7 +32,7 @@ class PostPublished extends Notification
      */
     public function via($notifiable)
     {
-        return ['database'];
+        return ['mail','database'];
     }
 
     /**
@@ -44,9 +44,10 @@ class PostPublished extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+        ->subject('nUEVA Mensaje')
+        ->line($notifiable->name . ', Hemos publicado una nueva post.')
+        ->action($this->post->body, route('posts.show', $this->post))
+        ->line('Gracias por leernos!');
     }
 
     /**

@@ -35,7 +35,7 @@
                                 @method('DELETE')
                                 @csrf
                                 <button class="badge badge-danger badge-pill">x</button>
-                            </form>
+                        </form>
                     </li>
                     @endforeach
                 </ul>

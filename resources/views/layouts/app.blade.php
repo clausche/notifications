@@ -12,10 +12,12 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{asset('css/app.css')}}">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -44,6 +46,7 @@
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         <li class="nav-item"><a class="nav-link" href="/">Inicio</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{route('noticias.index')}}">Noticias</a></li>
                         @guest
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -54,9 +57,10 @@
                         </li>
                         @endif
                         @else
-                        
-                        <li class="nav-item"><a class="nav-link" href="{{route('messages.create')}}">Enviar Mensaje</a></li>
-                        
+
+                        <li class="nav-item"><a class="nav-link" href="{{route('messages.create')}}">Enviar Mensaje</a>
+                        </li>
+                        <notifications></notifications>
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -85,7 +89,7 @@
             <div class="alert alert-success" role="alert">
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
                         aria-hidden="true">&times;</span></button>
-                <strong>Exito!</strong> Mensaje enviado correctamente!
+                {{session('flash')}}
             </div>
         </div>
         @endif

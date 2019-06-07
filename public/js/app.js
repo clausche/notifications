@@ -1703,9 +1703,24 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      notifications: []
+    };
+  },
   mounted: function mounted() {
-    console.log('Component mounted.');
+    var _this = this;
+
+    axios.get('/notificaciones').then(function (res) {
+      _this.notifications = res.data;
+    });
   }
 });
 
@@ -37000,19 +37015,44 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("li", { staticClass: "dropdown" }, [
+    _c(
+      "a",
+      {
+        staticClass: "nav-link dropdown-toggle",
+        attrs: { href: "/notificaciones", "data-toggle": "dropdown" }
+      },
+      [
+        _vm._v("Notificaiones\n  "),
+        _c("span", { staticClass: "glyphicon glyphicon-bell" }),
+        _vm._v(" "),
+        _c("span", {
+          staticClass: "badge",
+          domProps: { textContent: _vm._s(_vm.notifications.lenght) }
+        })
+      ]
+    ),
+    _vm._v(" "),
+    _vm._m(0)
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("li", [
-      _c("a", { attrs: { href: "/notificaciones" } }, [
-        _vm._v("Notification\n"),
-        _c("span", { staticClass: "badge" }, [_vm._v("1")])
-      ])
-    ])
+    return _c(
+      "ul",
+      {
+        staticClass: "dropdown-menu dropdown-menu-right",
+        attrs: { "aria-labelledby": "navbarDropdown" }
+      },
+      [
+        _c("a", { staticClass: "dropdown-item", attrs: { href: "#" } }, [
+          _vm._v("Notification 2 ")
+        ])
+      ]
+    )
   }
 ]
 render._withStripped = true
@@ -49340,8 +49380,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! c:\wamp64\www\laraproject\notification\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! c:\wamp64\www\laraproject\notification\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\wamp64\www\laraproject\notification\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\wamp64\www\laraproject\notification\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

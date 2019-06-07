@@ -17,4 +17,9 @@ Route::patch('notificaciones/{id}', 'NotificationController@read')->name('notifi
 Route::delete('destroynotificaciones/{id}', 'NotificationController@destroy')->name('notification.destroy');
 
 //Route::get('/', 'PostController@index');
-Route::resource('posts', 'PostsController');
+Route::resource('posts', 'PostsController')->names([
+    'create' => 'posts.create',
+    'show' => 'posts.show'
+]);
+
+Route::resource('noticias', 'NoticiasController');

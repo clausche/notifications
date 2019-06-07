@@ -1,25 +1,27 @@
 <?php
 
 namespace App\Notifications;
-use App\User;
+
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
+use App\Noticia;
 
-class MessageSent extends Notification
+class NoticiaPublished extends Notification
 {
-    public $message;
     use Queueable;
+
+    protected $noticia;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct($message)
+    public function __construct(Noticia $noticia)
     {
-        $this->message = $message;
+        $this->noticia = $noticia;
     }
 
     /**
@@ -30,7 +32,7 @@ class MessageSent extends Notification
      */
     public function via($notifiable)
     {
-        return ['mail','database'];
+        return ['mail', 'database'];
     }
 
     /**
@@ -42,10 +44,10 @@ class MessageSent extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-        ->subject('nUEVA Mensaje')
-        ->line($notifiable->name . ', Hemos publicado una nueva noticia.')
-        ->action($this->message->body, route('messages.show', $this->message))
-        ->line('Gracias por leernos!');
+            ->subject('nUEVA Noticia')
+            ->line($notifiable->name . ', Hemos publicado una nueva noticia.')
+            ->action($this->noticia->title, route('noticias.show', $this->noticia))
+            ->line('Gracias por leernos!');
     }
 
     /**
@@ -57,9 +59,8 @@ class MessageSent extends Notification
     public function toArray($notifiable)
     {
         return [
-            'link' => route('messages.show', $this->message->id),
-            'text' => "Has recibido un Mensaje " . $this->message->sender->name
+            'link' => route('noticias.show', $this->noticia->id),
+            'text' => "Una nueva Noticia se ha publicado - " . $this->noticia->title
         ];
-        
     }
 }

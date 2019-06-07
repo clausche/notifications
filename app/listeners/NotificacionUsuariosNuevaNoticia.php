@@ -1,14 +1,15 @@
 <?php
 
-namespace App\listeners;
+namespace App\Listeners;
+
 use App\User;
-use App\Events\PostCreated;
+use App\Events\NotiCreated;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Support\Facades\Notification;
-use App\Notifications\PostPublished;
+use App\Notifications\NoticiaPublished;
 
-class NotifyUserAboutNewPost
+class NotificacionUsuariosNuevaNoticia
 {
     /**
      * Create the event listener.
@@ -23,13 +24,13 @@ class NotifyUserAboutNewPost
     /**
      * Handle the event.
      *
-     * @param  PostCreated  $event
+     * @param  NotiCreated  $event
      * @return void
      */
-    public function handle(PostCreated $event)
+    public function handle(NotiCreated $event)
     {
         $users = User::all();
-        Notification::send($users, new PostPublished($event->post));
-        
+
+        Notification::send($users, new NoticiaPublished($event->noticia));
     }
 }
