@@ -10,17 +10,16 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-    
-
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="{{asset('css/app.css')}}">
-
+    
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{mix('css/app.css')}}">
+
+    <!-- Scripts -->
+    <script src="{{ mix('js/app.js') }}" defer></script>
+   
 </head>
 
 <body>
@@ -98,6 +97,7 @@
             @yield('content')
         </main>
     </div>
+    
     <script>
         window.setTimeout(function() {
                     $(".alert").fadeTo(500, 0).slideUp(500, function(){

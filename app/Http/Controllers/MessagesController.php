@@ -31,7 +31,7 @@ class MessagesController extends Controller
     {
         $users = User::where('id', '!=', auth()->id())->orderBy('id','desc')->get();
         return view('home', compact('users'));
-    }
+    } 
 
     public function store(Request $request)
     {

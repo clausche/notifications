@@ -33,8 +33,20 @@ class NotificationController extends Controller
     public function read($id)
     {
         DatabaseNotification::find($id)->markAsRead();
+
+        if (request()->ajax()) {
+            return auth()->user()->unreadNotifications;
+        }
+
         return back()->with('flash', 'Notificacion marcada como leida!');
     }
+
+    public function allread()
+    { 
+        $markallread = auth()->user()->unreadNotifications->markAsRead();
+        return back()->with('flash', 'Marcados como leidos');
+    }
+
     public function unread($id)
     {
         DatabaseNotification::find($id)->markAsUnread();
