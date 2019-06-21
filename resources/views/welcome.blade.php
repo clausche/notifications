@@ -21,5 +21,8 @@
     </div>
 
 </div>
-<login></login>
+<v-app>
+
+    <login></login>
+</v-app>
 @endsection

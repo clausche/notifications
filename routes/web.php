@@ -33,3 +33,9 @@ Route::get('tareatodo', function () {
     return view('vuejs');
 });
 
+Route::get('pruebavuetify', function() {
+    return view('pruebavuetify');
+});
+Route::get('tareas-vue', function() {
+    return view('tareas-vue');
+});

@@ -8,10 +8,8 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
-/* import Vue from 'vue'
 import Vuetify from 'vuetify'
-
-Vue.use(Vuetify) */
+Vue.use(Vuetify)
 
 /**
  * The following block of code may be used to automatically register your
@@ -28,6 +26,8 @@ Vue.component('notifications', require('./components/Notifications.vue').default
 Vue.component('lista', require('./components/Lista.vue').default);
 Vue.component('tareatodo', require('./components/TareaTodo.vue').default);
 Vue.component('login', require('./components/Login.vue').default);
+Vue.component('pruebavuetify', require('./components/Pruebavuetify.vue').default);
+Vue.component('tareas-vue', require('./components/Tareas-vue.vue').default);
 
 
 /**
