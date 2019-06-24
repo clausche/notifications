@@ -16,9 +16,11 @@
       <v-flex md6>
         <v-card class="mb-3">
           <v-card-text>
-            <v-text-field box label="Titulo" v-model="value"></v-text-field>
-            <v-textarea class="pl-2" label="Texto aqui" name="name"></v-textarea>
-            <v-btn round block color="success">Agregar Post</v-btn>
+            <v-form @submit.prevent="agregarPost" >
+            <v-text-field box label="Titulo" v-model="titulo"></v-text-field>
+            <v-textarea class="pl-2" label="Texto aqui" v-model="descripcion"></v-textarea>
+            <v-btn round block color="success" type="submit">Agregar Post</v-btn>
+            </v-form>
           </v-card-text>
         </v-card>
       </v-flex>
@@ -47,6 +49,19 @@ export default {
       titulo: '',
       descripcion: ''
     };
+  },
+  methods:{
+    agregarPost(){
+      this.listaPosts.push({
+
+        id: Date.now(),
+        titulo: this.titulo,
+        descripcion: this.descripcion
+        
+      })
+      this.titulo = ''
+      this.descripcion = ''
+    }
   }
 };
 </script>

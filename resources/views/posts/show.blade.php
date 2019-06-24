@@ -7,4 +7,8 @@
     <small>{{$post->body}}</small>
 
 </div>
+<v-app>
+    <postshow></postshow>
+
+</v-app>
 @endsection

@@ -22,7 +22,7 @@
 
 </div>
 <v-app>
-
     <login></login>
+    <posts></posts>
 </v-app>
 @endsection

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
+use App\Http\Resources\PostResource;
 
 class PostsController extends Controller
 {
@@ -17,6 +18,18 @@ class PostsController extends Controller
     {
         $posts = Post::paginate(5);
         return view('welcome', compact('posts'));
+    }
+
+    public function vuePostAll()
+    {
+        $posts = Post::all();
+        if(request()->wantsJson()){
+            return $posts;
+        }
+        return view('mycrud');
+
+        //return $posts;
+        //return response()->json($posts);
     }
 
     /**
@@ -48,6 +61,11 @@ class PostsController extends Controller
      */
     public function show(Post $post)
     {
+        
+        if(request()->wantsJson()){
+            //return new PostResource($post);
+            return $post;
+        }
         return view('posts.show', compact('post'));
     }
 

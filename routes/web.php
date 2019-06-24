@@ -1,4 +1,6 @@
 <?php
+use App\Http\Controllers\PostsController;
+
 Route::get('/', 'PostsController@index');
 
 // Route::get('/', function () {
@@ -39,3 +41,4 @@ Route::get('pruebavuetify', function() {
 Route::get('tareas-vue', function() {
     return view('tareas-vue');
 });
+Route::get('mycrud','PostsController@vuePostAll');
